@@ -10,7 +10,7 @@ class SearchesController < ApplicationController
 
   def search
     foursquare = FoursquareService.new
-    @resp = foursquare.searches(ENV['FOURSQUARE_CLIENT_ID'], ENV['FOURSQUARE_CLIENT_SECRET'])
+    @resp = foursquare.searches(ENV['FOURSQUARE_CLIENT_ID'], ENV['FOURSQUARE_CLIENT_SECRET'], params[:zipcode])
 
     if @resp.success?
       @venues = body["response"]["venues"]
